@@ -1,4 +1,7 @@
 from fastapi import FastAPI
+from enum import Enum 
+from pydantic import BaseModel 
+import requests
 
 app = FastAPI()
 
@@ -107,7 +110,12 @@ async def read_items(
         results.update({"q": q})
     return results
 
-#aula04 28/04
+
+
+
+
+# AULA 4 28/04
+
 '''@app.get("/items2/")
 async def read_items2(q: list[str] | None = Query(default=None,title="Valor de consulta padrão nulo",description=
 "estou testando...")):
@@ -268,3 +276,10 @@ async def update_item(item_id: int, item: Item):
     results = {"item_id": item_id, "item": item}
     return results'''
 
+#aula 05 05/05/2025
+
+#Codigo de status de resposta 
+
+@app.post("/items3/", status_code=201)
+async def create_item(name: str):
+    return {"name": name}
